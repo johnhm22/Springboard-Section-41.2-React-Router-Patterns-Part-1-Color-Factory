@@ -1,19 +1,25 @@
 import React from 'react';
-import { useParams } from "react-router-dom";
+import {Link, useParams} from 'react-router-dom';
+import './ColorDetails.css';
 
 
 const ColorDetails = () => {
-    
-    const { color } = useParams();
- 
 
-    return(
-        <>
-        <h1>This is {color}</h1>
-        <h1>isn't it</h1>
-        <h1>beautiful!!</h1>
-        </>
-    )
+  const params = useParams();
+    console.log("params: ", params);
+
+
+  return (
+    <>
+    <div className='Color' style={{backgroundColor: params.color}}>
+    <p>This is {params.color}</p>
+    <p>isn't it beautiful!!</p>
+    <Link to='/colors'>Go back</Link>
+    </div>
+    </>
+  )
+
 }
 
-export default ColorDetails
+
+export default ColorDetails;

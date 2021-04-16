@@ -1,11 +1,11 @@
 import {React} from 'react';
 import './App.css';
-import Colors from './Colors';
+import Routes from './Routes';
 import './App.css';
 
 function App() {
   return (
-    <Colors />
+    <Routes />
   );
 }
 

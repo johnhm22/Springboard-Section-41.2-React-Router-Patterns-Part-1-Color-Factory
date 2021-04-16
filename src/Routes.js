@@ -1,22 +1,30 @@
 import {React, useState} from 'react';
 import ColorForm from './ColorForm';
-import Navbar from './Navbar'
+import ColorList from './ColorList'
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import ColorDetails from './ColorDetails';
 
 
-const Colors = () => {
-    const [colors, setColor] = useState();
+
+function Routes () {
+
+    const INITIAL_STATE = ['red', 'purple', 'teal'];
+
+    const [colors, updateColors] = useState(INITIAL_STATE);
+    
     const addColor = (color) => {
-        setColor([...colors, {color}]);
+      console.log("addColor has been called. Color is: ", color);
+        updateColors(colors => [...colors, color]);
     }
+
 
     return(
     <>
-        <h1>Welcome to the Color Factory</h1>
         <BrowserRouter>
-        <Navbar colors={colors}/>
         <Switch>
+          <Route exact path="/colors" >
+            <ColorList colors={colors}/>
+          </Route>
           <Route exact path="/colors/new" >
             <ColorForm addColor={addColor}/>
           </Route>
@@ -27,8 +35,7 @@ const Colors = () => {
       </Switch> 
       </BrowserRouter>
     </>
-
     )
 }
 
-export default Colors
+export default Routes;

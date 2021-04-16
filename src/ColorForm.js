@@ -1,5 +1,7 @@
 import React, {useState} from 'react'
-// import './MadlibForm.css'
+import { useHistory } from 'react-router-dom';
+import './ColorForm.css'
+
 
 
 const ColorForm = ({addColor}) => {
@@ -7,13 +9,15 @@ const ColorForm = ({addColor}) => {
         color: ''
     }
 
+    const history = useHistory();
 
 const [formData, setFormData] = useState(INITIAL_STATE)
 
 const handleSubmit = (e) => {
     e.preventDefault();
-    addColor({...formData});
+    addColor(formData.color);
     setFormData(INITIAL_STATE);
+    history.push('/colors');
 }
 
 const handleChange = e => {
